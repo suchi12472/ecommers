@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GadgetZone Pro — Flipkart Pro (Animated)</title>
+  <meta name="description" content="Flipkart Pro — animated e-commerce demo by Suchindran D.R. Vibrant gradients, micro-animations, cart UX." />
+  <link rel="stylesheet" href="style.css" >
+</head>
+<body>
+  <!-- Particle background canvas -->
+  <canvas id="bg-canvas" class="bg-canvas" aria-hidden="true"></canvas>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#" aria-label="GadgetZone Pro">Gadget<span class="accent">Zone</span></a>
+
+      <nav class="nav-cats" role="navigation" aria-label="categories" id="catTabs">
+        <!-- category tabs injected by JS -->
+      </nav>
+
+      <div class="top-right">
+        <div class="search-wrap">
+          <input id="searchInput" type="search" placeholder="Search products, brands, specs..." aria-label="Search" />
+          <button id="clearSearch" title="Clear">✕</button>
+        </div>
+
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">🌗</button>
+        <button id="cartBtn" class="icon-btn" aria-label="Open cart">🛒 <span id="cartCount">0</span></button>
+      </div>
+    </div>
+
+    <!-- animated promo banner -->
+    <div class="promo">
+      <div class="promo-inner">
+        <strong>FLASH SALE</strong> — Extra 10% off on select gadgets • Free shipping over ₹1499
+      </div>
+      <div class="promo-glow" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <main class="container main-grid" id="mainGrid">
+    <aside class="filters glass">
+      <h3>Filters</h3>
+      <label class="filter-block">
+        <span>Category</span>
+        <select id="categorySelect">
+          <option value="all">All</option>
+        </select>
+      </label>
+
+      <label class="filter-block">
+        <span>Sort</span>
+        <select id="sortSelect">
+          <option value="popular">Recommended</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+        </select>
+      </label>
+
+      <label class="filter-block">
+        <span>Max price: ₹<span id="priceMaxLabel">20000</span></span>
+        <input id="priceRange" type="range" min="0" max="200000" value="200000" />
+      </label>
+
+      <div class="filter-actions">
+        <button id="resetFilters" class="btn ghost">Reset</button>
+      </div>
+
+      <div class="small muted foot-note">
+        Demo site — client-side only. Extend with backend for full production.
+      </div>
+    </aside>
+
+    <section class="products-section">
+      <div class="section-head glass">
+        <div>
+          <h2 id="resultsTitle">Trending Products</h2>
+          <div class="muted small" id="resultsCount">Showing 0 items</div>
+        </div>
+        <div class="controls">
+          <label class="small muted">View</label>
+          <select id="viewSelect" title="Grid / List view">
+            <option value="grid">Grid</option>
+            <option value="list">List</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="productsGrid" class="products-grid" role="list"></div>
+    </section>
+  </main>
+
+  <!-- Product Quick View Modal -->
+  <div id="productModal" class="modal" aria-hidden="true">
+    <div class="modal-inner">
+      <button class="modal-close" id="closeModal" aria-label="Close">✕</button>
+      <div class="modal-body">
+        <img id="modalImage" src="" alt="" />
+        <div class="modal-info">
+          <h3 id="modalTitle"></h3>
+          <div class="muted" id="modalRating"></div>
+          <p id="modalDesc"></p>
+          <div class="price">₹ <span id="modalPrice"></span></div>
+          <div class="modal-actions">
+            <button id="modalAddToCart" class="btn primary">Add to cart</button>
+            <button id="modalBuyNow" class="btn ghost">Buy now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide-in Cart Panel -->
+  <aside id="cartPanel" class="cart-panel" aria-hidden="true">
+    <header>
+      <h3>Cart</h3>
+      <button id="closeCart" title="Close">✕</button>
+    </header>
+    <div id="cartItems" class="cart-items"></div>
+    <footer class="cart-footer">
+      <div class="cart-summary">
+        <div>Subtotal</div>
+        <div>₹ <span id="cartSubtotal">0</span></div>
+      </div>
+      <div class="cart-actions">
+        <button id="checkoutBtn" class="btn primary">Checkout</button>
+        <button id="clearCart" class="btn ghost">Clear</button>
+      </div>
+    </footer>
+  </aside>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>© <span id="year"></span> Suchindran D.R — GadgetZone Pro</div>
+      <div class="muted">Built with love • HTML · CSS · JS</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
